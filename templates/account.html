@@ -1,0 +1,20 @@
+{% extends "base.html"%}
+{% block title %}SREEJA || ACCOUNT {% endblock %}
+{% block page %}
+<div class="container">
+    <div class="user-account row bg-secondary mt-4 pt-4 ">
+        <div class="col-4">
+
+            <img src="{{user.image.url}}" class="profile-pic rounded-circle">
+        </div>
+        <div class="col-8 form-data text-center">
+            <input class="form-control" value="{{user.name}}" readonly>
+            <input class="form-control mt-4" value="{{user.email}}" readonly>
+            <input class="form-control mt-4" value="{{user.contact}}" readonly>
+            <textarea class="form-control mt-4" readonly>{{user.address}}</textarea>
+            <a class="btn btn-primary mt-4" href="{% url 'update_profile'%}">Update Account</a> <a class="btn btn-success mt-4" href="{% url 'update_pass'%}">change password</a>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

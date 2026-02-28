@@ -1,0 +1,28 @@
+{% extends "base.html"%}
+{% block title %}SREEJA || User {% endblock %}
+{% block page %} 
+
+
+{% for product in cart %}
+<div class="card mt-4" style="width:80vw; min-height: 2%; margin: auto 10vw auto 10vw;">
+    <div class="row g-0">
+      <div class="col-md-3">
+        <img src="{{product.image.url}}"  style="width: 100%;">
+      </div>
+      <div class="col-md-9 ">
+        <div class="card-body">
+          <h3 class="card-title bg-primary text-center text-light p-2">{{product.name}}</h3>
+          <p class="card-text row">
+            <p class="card-text col-6">price  : <del>{{product.price}}</del><br>Discounted price : {{product.discount}}<br>{{product.description}}</p>
+            <p class="col-6 text-center">
+                <a href="{% url 'remove_cart' product.id %}" class="btn btn-danger">remove</a>
+                <a href="{% url 'place_order' product.id %}" class="btn btn-primary">buy now !!</a>
+            </p>
+          </p>
+        </div>
+      </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

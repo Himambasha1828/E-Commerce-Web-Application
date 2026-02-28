@@ -1,0 +1,30 @@
+nav{
+    min-height: 15vh;
+}
+
+.navbar-brand{
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+.nav-link{
+    font-size: 1.5rem;
+    font-weight: 700 ;
+    margin-left: 10px;
+}
+.dropdown-toggle{
+    max-width: 15vw;
+    overflow-y:hidden;
+}
+
+.user-account{
+    min-height: 60vh;
+}
+.profile-pic{
+    width: 80%;
+    margin: 10% 10% 10% 10%;
+}
+
+.form-data{
+    padding: 5%;
+}

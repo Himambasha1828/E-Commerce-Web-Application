@@ -1,0 +1,25 @@
+{% extends "base.html"%}
+{% block title %}SREEJA || User {% endblock %}
+{% block page %} 
+<div class="container">
+    <div class="row mt-4">
+        {% for product in products %}
+        <div class="col-4 mt-4">
+            <div class="card" style="width: 18rem;">
+                <img src="{{product.image.url}}" class="card-img-top" alt="..." height="200px">
+                <div class="card-body">
+                  <h5 class="card-title">{{product.name}}</h5>
+                  <p class="card-text">price  : <del>{{product.price}}</del><br>Discounted price : {{product.discount}}<br>{{product.description}}</p>
+                  <a href="{% url 'place_order' ele=product.id %}" class="btn btn-primary">buy now !!</a>
+                  <a href="{% url 'add_cart' ele=product.id %}" class="btn btn-warning">add to cart</a>
+                </div>
+              </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}
+   
+

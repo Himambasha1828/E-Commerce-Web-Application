@@ -1,0 +1,84 @@
+{% extends "base.html"%}
+{% block title %}SREEJA || User {% endblock %}
+{% block page %} 
+
+
+
+<div class="card mb-3" style="width:60vw; min-height: 40vh; margin: 20vh 20vw auto 20vw;">
+  {% if msg%}
+  <div class="alert alert-success" role="alert" id="msg">
+    <h4 class="text-center">{{msg}} !!</h4>
+
+  </div>
+  <script>
+    setTimeout(function() {
+      document.getElementById("msg").hidden = true;
+      }, 3000);
+  </script>
+  {% endif%}
+    <div class="row g-0">
+      <div class="col-md-6">
+        <img src="{{product.image.url}}"  style="width: 100%;">
+      </div>
+      <div class="col-md-6 text-center">
+        <div class="card-body">
+          <h3 class="card-title bg-primary text-center text-light p-2">{{product.name}}</h3>
+          <p class="card-text">price  : <del>{{product.price}}</del><br>Discounted price : {{product.discount}}<br>{{product.description}}</p>
+          <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">place order</a>
+
+          <a href="#" class="btn btn-warning">add to cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      <form method="post">{% csrf_token%}
+        <div class="modal-header">
+          <h5 class="text-center text-primary" id="exampleModalToggleLabel">ENTER ADDRESS</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+            <input type="text" name="name" placeholder="name" class="form-control">
+            <input type="text" name="city" placeholder="city" class="form-control mt-2">
+            <input type="text" name="state" placeholder="state" class="form-control mt-2">
+            <input type="text" name="country" placeholder="country" class="form-control mt-2">
+            <input type="text" name="pincode" placeholder="pincode" class="form-control mt-2">
+
+          
+        </div>
+        <div class="modal-footer">
+          
+          <button class="btn btn-danger" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal" type="button">cancel order!!</button>
+          <button type="submit" class="btn btn-primary">Delever to this address !!</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-danger" id="exampleModalToggleLabel2">Cancel Order !!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          are you sure you want to cancel order !!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">yes i am sure !!</button>
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">add address !!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

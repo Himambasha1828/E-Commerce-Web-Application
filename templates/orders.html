@@ -1,0 +1,35 @@
+{% extends "base.html"%}
+{% block title %}SREEJA || User {% endblock %}
+{% block page %} 
+
+
+{% for product in orders%}
+<div class="card mt-4" style="width:80vw; min-height: 2%; margin: auto 10vw auto 10vw;">
+    <div class="row g-0">
+      <div class="col-md-3">
+        <img src="{{product.image.url}}"  style="width: 100%;">
+      </div>
+      <div class="col-md-9 ">
+        <div class="card-body">
+          <h3 class="card-title bg-primary text-center text-light p-2">{{product.name}}</h3>
+          <p class="card-text row">
+            <span class="col-6">
+                price  : {{product.price}}<br>Status : {{product.status}}
+            </span>
+            <span class="col-6">
+                {{product.address}}<br>
+                <a class="btn btn-danger" href="{% url 'cancel_order' ele=product.id %}"> cancel order </a>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+</div>
+{% endfor %}
+
+
+
+
+
+
+{% endblock %}
